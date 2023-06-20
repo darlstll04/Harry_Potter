@@ -16,8 +16,11 @@ export const createModal = (characters = null, data = null) => {
   characters.forEach((character) => {
     character.addEventListener("click", () => { 
       const characterId = character.id;
-      modal.innerHTML = ({image, name, gender, house, dateOfBirth, actor, alternate_names, alternate_actors} = data.find((el) => el.id === characterId))=>
-        `<div class="modal__header">
+      const {image, name, gender, house, dateOfBirth, actor, alternate_names, alternate_actors}= data.find((el) => el.id === characterId)
+      const alterNames = alternate_names === "null" ? "No info" : "No info";
+      const alterActors = alternate_actors === "null" ? "No info" : "No info";
+      modal.innerHTML = 
+       ( `<div class="modal__header">
         <img class="modal-img" src="${image}" alt=""/>
 		  <button class="close-modal">&times;</button>
       </div>
@@ -28,16 +31,16 @@ export const createModal = (characters = null, data = null) => {
         <p class="modal__body-category"><span>House:</span> ${house}</p>
         <p class="modal__body-date"><span>Date of birth:</span> ${dateOfBirth}</p>
         <p class="modal__body-actor"><span>Actor:</span> ${actor}</p>
-        <p class="modal__body-altername"><span>Alternate names:</span> ${alternate_names}</p>
-        <p class="modal__body-alteractor"><span>Alternate actors:</span> ${alternate_actors}</p>
-      </div>
-      `;
+        <p class="modal__body-altername"><span>Alternate names:</span> ${alternate_names || alterNames}</p>
+        <p class="modal__body-alteractor"><span>Alternate actors:</span> ${alternate_actors || alterActors}</p>
+      </div>`)
+      
       showModal();
 
       const closeModalBtn = document.querySelector(".close-modal");
       closeModalBtn.addEventListener("click", closeModal);
     });
-  });
+  })
 };
 
 overlay.addEventListener("click", closeModal);

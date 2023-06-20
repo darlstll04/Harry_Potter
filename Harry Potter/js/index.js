@@ -1,6 +1,6 @@
 import { getAxiosData } from "./axiosT.js";
 
 
-const characters = document.querySelector(".cards");
+const cardsParent = document.querySelector(".cards");
 
-getAxiosData(characters);
+getAxiosData(cardsParent);

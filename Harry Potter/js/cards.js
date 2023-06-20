@@ -27,8 +27,8 @@ export const createCards = (data, div) => {
     createCards(searchedData, div);
 })
     
-    const characters = document.querySelectorAll(".cards")
-    createModal(characters, div)
+const characters = document.querySelectorAll(".cards");
+createModal(characters, data);
   };
 
 

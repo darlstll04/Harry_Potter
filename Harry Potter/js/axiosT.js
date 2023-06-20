@@ -1,11 +1,11 @@
-import { createCards} from "./cards.js";
+import { createCards } from "./cards.js";
 
-const HARRY_URL = "https://hp-api.onrender.com/api/characters";
+const HARRY_URL = `https:hp-api.onrender.com/api/characters`;
 
-export const getAxiosData = async (characters = null) => {
+export const getAxiosData = async (cardsParent = null) => {
   try {
     const { data } = await axios(HARRY_URL);
-    createCards(data, characters);
+    createCards(data, cardsParent);
   } catch (err) {
     console.error(err.message);
   }
